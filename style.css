@@ -414,7 +414,7 @@ aside .aside-resume span {
 
 .experience-section {
   width: 100%;
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -429,7 +429,7 @@ aside .aside-resume span {
   width: 80%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: 1fr
   row-gap: 2rem;
   overflow-x: hidden;
 }
