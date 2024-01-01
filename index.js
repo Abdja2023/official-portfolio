@@ -129,63 +129,19 @@ Testimonials.forEach((a) => {
   });
 });
 
-///----------TITLE-------------------////////////
+/// ------------------------------Intersection Observer --------------------------------------------
+
+//-----------Selectors---------------------------
 
 const sectionTitle = document.querySelectorAll(".section-title");
 sectionTitle.forEach((a) => a.classList.remove("section-title-show"));
 const titles = [...sectionTitle];
 
-///-----------Skills Observer---------------------///////////
-
 const skillsCards = document.querySelector(".skills-cards");
 
-function skillsFunc(entries, observer) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      if (entry.intersectionRatio >= 0.6) {
-        // console.log("end");
-      } else if (entry.intersectionRatio >= 0.3) {
-        skillsCards.classList.add("skills-cards-show");
-      } else if (entry.intersectionRatio >= 0.2) {
-        titles.at(0).classList.add("section-title-show");
-      }
-    }
-  });
-}
-const skillsOpt = {
-  threshold: [0.2, 0.5, 0.6],
-};
-const skillsSectionObserver = new IntersectionObserver(skillsFunc, skillsOpt);
-
-skillsSectionObserver.observe(skillsSection);
-
-///-----------Experience Observer---------------------///////////
 const experienceSection = document.querySelector(".experience-section");
 const experienceTabs = [...document.querySelectorAll(".experience")];
 console.log(experienceTabs);
-function experienceFunc(entries, observer) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      if (entry.intersectionRatio >= 0.9) {
-        experienceTabs.at(2).classList.add("experience-show");
-      } else if (entry.intersectionRatio >= 0.5) {
-        experienceTabs.at(1).classList.add("experience-show");
-      } else if (entry.intersectionRatio >= 0.2) {
-        titles.at(1).classList.add("section-title-show");
-        experienceTabs.at(0).classList.add("experience-show");
-      }
-    }
-  });
-}
-
-const experienceObserver = new IntersectionObserver(experienceFunc, {
-  root: null,
-  threshold: [0.2, 0.5, 0.9],
-});
-
-experienceObserver.observe(experienceSection);
-experienceTabs.forEach((tab) => experienceObserver.observe(tab));
-///-----------Real About Me  Observer---------------------///////////
 const aboutMeReal_rightContent = document.querySelector(
   ".aboutMe-real .content .right"
 );
@@ -193,134 +149,107 @@ const aboutMeReal_image = document.querySelector(
   ".aboutMe-real .content .aboutMe-real-illustration"
 );
 
-function aboutMeRealFunc(entries, observer) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      aboutMeReal_rightContent.classList.add("rightShow");
-      aboutMeReal_image.classList.add("aboutMeRealIllustrationShow");
-      titles.at(2).classList.add("section-title-show");
-    }
-  });
-}
-const aboutMeRealObserver = new IntersectionObserver(aboutMeRealFunc, {
-  root: null,
-  threshold: 0.3,
-});
-aboutMeRealObserver.observe(aboutMeRealSection);
-
-///-----------Projects Observer---------------------///////////
+const projectSection = document.querySelector(".projects");
 const projectsCards = [...document.querySelectorAll(".project-card")];
-console.log(projectsCards);
-function projectFunc(entries, observer) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      if (entry.intersectionRatio >= 1) {
-        projectsCards.at(2).classList.add("projectCardShow");
-      } else if (entry.intersectionRatio >= 0.8) {
-        projectsCards.at(1).classList.add("projectCardShow");
-      } else if (entry.intersectionRatio >= 0.3) {
-        projectsCards.at(0).classList.add("projectCardShow");
-      } else if (entry.intersectionRatio >= 0.2) {
-        titles.at(3).classList.add("section-title-show");
-      }
-    }
-  });
-}
-const projectObserver = new IntersectionObserver(projectFunc, {
-  root: null,
-  threshold: [0.2],
-});
-projectObserver.observe(projectsSection);
 
-function projectCardFunc(entries, observer) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const className = [...entry.target.classList].at(0);
-
-      switch (className) {
-        case "proj-01":
-          projectsCards.at(0).classList.add("projectCardShow");
-          break;
-        case "proj-02":
-          projectsCards.at(1).classList.add("projectCardShow");
-          break;
-        case "proj-03":
-          projectsCards.at(2).classList.add("projectCardShow");
-          break;
-      }
-    }
-  });
-}
-
-const projectCardObserver = new IntersectionObserver(projectCardFunc, {
-  root: null,
-  threshold: 0.4,
-});
-projectsCards.forEach((card) => projectCardObserver.observe(card));
-
-///--------------------Testimonials-----------------------////
 const testimonialsSection = document.querySelector(".testimonials");
 const testimonialsCards = [...document.querySelectorAll(".test-card")];
-
-function testimonialsFunc(entries, observer) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      titles.at(4).classList.add("section-title-show");
-    }
-  });
-}
-
-const testimonialsObserver = new IntersectionObserver(testimonialsFunc, {
-  root: null,
-  threshold: 0.3,
-});
-
-function testCardFunc(entries, observer) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      let id = entry.target.id;
-      switch (id) {
-        case "1":
-          testimonialsCards.at(0).classList.add("testCardShow");
-          break;
-        case "2":
-          testimonialsCards.at(1).classList.add("testCardShow");
-          break;
-        case "3":
-          testimonialsCards.at(2).classList.add("testCardShow");
-          break;
-      }
-    }
-  });
-}
-const testCardObserver = new IntersectionObserver(testCardFunc, {
-  root: null,
-  threshold: 0.3,
-});
-
-testCardObserver.observe(testimonialsCards.at(0));
-testCardObserver.observe(testimonialsCards.at(1));
-testCardObserver.observe(testimonialsCards.at(2));
-
-testimonialsObserver.observe(testimonialsSection);
-
-//------Contact Observer--------------//
 
 const leftContent = document.querySelector(".contact .left");
 const rightContent = document.querySelector(".contact .right");
 
-function contactFunc(entries, observer) {
+console.log(titles);
+function observerFunc(entries, observer) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      leftContent.classList.add("leftShow");
-      rightContent.classList.add("rightShow");
+      let id = entry.target.id;
+      const className = [...entry.target.classList].at(0);
+      if (entry.intersectionRatio >= 0.9) {
+      } else if (entry.intersectionRatio >= 0.8) {
+        if (className === "left" || className === "right") {
+          leftContent.classList.add("leftShow");
+          rightContent.classList.add("rightShow");
+          console.log("done");
+        }
+      } else if (entry.intersectionRatio >= 0.7) {
+      } else if (entry.intersectionRatio >= 0.6) {
+      } else if (entry.intersectionRatio >= 0.4) {
+        switch (className) {
+          case "proj-01":
+            projectsCards.at(0).classList.add("projectCardShow");
+            break;
+        }
+      } else if (entry.intersectionRatio >= 0.3) {
+        switch (id) {
+          case "1":
+            testimonialsCards.at(0).classList.add("testCardShow");
+            break;
+          case "2":
+            testimonialsCards.at(1).classList.add("testCardShow");
+            break;
+          case "3":
+            testimonialsCards.at(2).classList.add("testCardShow");
+            break;
+        }
+
+        if (className === "aboutMe-real") {
+          aboutMeReal_rightContent.classList.add("rightShow");
+          aboutMeReal_image.classList.add("aboutMeRealIllustrationShow");
+        }
+        skillsCards.classList.add("skills-cards-show");
+      } else if (entry.intersectionRatio >= 0.2) {
+        if (className === "skills") {
+          titles.at(0).classList.add("section-title-show");
+        }
+        if (className === "experience-section") {
+          titles.at(1).classList.add("section-title-show");
+          experienceTabs.at(0).classList.add("experience-show");
+        }
+        if (className === "aboutMe-real") {
+          titles.at(2).classList.add("section-title-show");
+        }
+
+        if (className === "projects") {
+          titles.at(3).classList.add("section-title-show");
+        }
+        if (className === "testimonials") {
+          titles.at(4).classList.add("section-title-show");
+        }
+      }
     }
   });
 }
 
-const contactObserver = new IntersectionObserver(contactFunc, {
+const observer = new IntersectionObserver(observerFunc, {
   root: null,
-  threshold: 0.8,
+  threshold: [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
 });
 
-contactObserver.observe(contactSection);
+titles.forEach((title) => observer.observe(title));
+
+observer.observe(skillsSection);
+
+observer.observe(experienceSection);
+experienceTabs.forEach((tab) => observer.observe(tab));
+
+observer.observe(aboutMeRealSection);
+
+observer.observe(projectSection);
+projectsCards.forEach((card) => observer.observe(card));
+
+observer.observe(testimonialsSection);
+testimonialsCards.forEach((card) => observer.observe(card));
+
+observer.observe(leftContent);
+observer.observe(rightContent);
+
+//// project cards links
+
+const project1 = projectsCards.at(0);
+const project1_link = "https://cloudhub-beta.vercel.app/";
+project1.addEventListener("click", (e) => {
+  e.preventDefault();
+  const fullCard = e.target.closest(".project-card");
+  window.open(project1_link, "_blank");
+});
+
