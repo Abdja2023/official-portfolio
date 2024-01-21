@@ -187,8 +187,8 @@ const aboutMeReal_image = document.querySelector(
 const projectSection = document.querySelector(".projects");
 const projectsCards = [...document.querySelectorAll(".project-card")];
 
-const testimonialsSection = document.querySelector(".testimonials");
-const testimonialsCards = [...document.querySelectorAll(".test-card")];
+// const testimonialsSection = document.querySelector(".testimonials");
+// const testimonialsCards = [...document.querySelectorAll(".test-card")];
 
 const leftContent = document.querySelector(".contact .left");
 const rightContent = document.querySelector(".contact .right");
@@ -274,8 +274,8 @@ observer.observe(aboutMeRealSection);
 observer.observe(projectSection);
 projectsCards.forEach((card) => observer.observe(card));
 
-observer.observe(testimonialsSection);
-testimonialsCards.forEach((card) => observer.observe(card));
+// observer.observe(testimonialsSection);
+// testimonialsCards.forEach((card) => observer.observe(card));
 
 observer.observe(leftContent);
 observer.observe(rightContent);
