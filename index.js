@@ -211,6 +211,9 @@ function observerFunc(entries, observer) {
           case "proj-02":
             projectsCards.at(1).classList.add("projectCardShow");
             break;
+          case "proj-03":
+            projectsCards.at(2).classList.add("projectCardShow");
+            break;
         }
         if (className === "left" || className === "right") {
           leftContent.classList.add("leftShow");
@@ -284,8 +287,10 @@ observer.observe(rightContent);
 
 const project1 = projectsCards.at(0);
 const project2 = projectsCards.at(1);
+const project3 = projectsCards.at(2);
 const project1_link = "https://cloudhub-beta.vercel.app/";
 const project2_link = "https://future-tech-sandy.vercel.app/";
+const project3_link = "https://clean-web-app.vercel.app/";
 project1.addEventListener("click", (e) => {
   e.preventDefault();
   const fullCard = e.target.closest(".project-card");
@@ -295,4 +300,9 @@ project2.addEventListener("click", (e) => {
   e.preventDefault();
   const fullCard = e.target.closest(".project-card");
   window.open(project2_link, "_blank");
+});
+project3.addEventListener("click", (e) => {
+  e.preventDefault();
+  const fullCard = e.target.closest(".project-card");
+  window.open(project3_link, "_blank");
 });
