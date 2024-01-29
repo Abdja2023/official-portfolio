@@ -970,9 +970,9 @@ footer {
     width: 70%;
     filter: none;
   }
-  .projects .proj-02 {
+/*   .projects .proj-02 {
     flex-direction: column-reverse;
-  }
+  } */
 
   .testimonials .content {
     width: 85%;
