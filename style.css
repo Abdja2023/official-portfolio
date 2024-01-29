@@ -592,6 +592,7 @@ aside .aside-resume span {
   border-radius: 20px;
   overflow: hidden;
   transition: var(--transition-500ms);
+  cursor:pointer ; 
 }
 
 .project-card:nth-of-type(2) {
